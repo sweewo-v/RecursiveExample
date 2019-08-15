@@ -25,20 +25,23 @@ namespace RecursiveExample
 
         public void Print(Predicate<sbyte> predicate, int i = 0)
         {
-            if (i < _values.Length)
+            if (i < _values.Length * 2)
             {
-                if (predicate(_values[i]))
+                if (i < _values.Length)
                 {
-                    _writer.Write(string.Format(Val, _values[i]));
+                    if (predicate(_values[i]))
+                    {
+                        _writer.Write(string.Format(Val, _values[i]));
+                    }
                 }
-                Print(predicate, ++i);
-            }
-            else if (i >= _values.Length && i < _values.Length * 2)
-            {
-                if (!predicate(_values[i - _values.Length]))
+                else
                 {
-                    _writer.Write(string.Format(Val, _values[i - _values.Length]));
+                    if (!predicate(_values[i - _values.Length]))
+                    {
+                        _writer.Write(string.Format(Val, _values[i - _values.Length]));
+                    }
                 }
+
                 Print(predicate, ++i);
             }
         }

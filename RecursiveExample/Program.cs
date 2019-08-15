@@ -7,7 +7,7 @@ namespace RecursiveExample
         static void Main(string[] args)
         {
             IWriter writer = new ConsoleWriter();
-            RecursiveHelper helper = new RecursiveHelper(200, -100, 100, writer);
+            RecursiveHelper helper = new RecursiveHelper(100, -100, 100, writer);
 
             helper.Print(i => i < 0);
 
